@@ -43,6 +43,7 @@ resetGame.addEventListener('click',restartGame)
 function restartGame() {
     gameSetup.style.display = 'flex'
     playScreen.style.display = 'none'
+    startGame()
 }
 
 function setupBlock() {
@@ -136,6 +137,7 @@ function startGame() {
 
 function handleclick(e){
     const cell = e.target
+    console.log(e.target)
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
     placeMark(cell,currentClass)
     if(checkWin(currentClass)){
