@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <title>Document</title>
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: '<url-to-redirect-to-on-success>',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+        firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+      ],
+      // tosUrl and privacyPolicyUrl accept either url string or a callback
+      // function.
+      // Terms of service url/callback.
+      tosUrl: '<your-tos-url>',
+      // Privacy policy url/callback.
+      privacyPolicyUrl: function() {
+        window.location.assign('<your-privacy-policy-url>');
+      }
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+</head>
+<body>
+  <div id="firebaseui-auth-container"></div>
+    <!-- starting setup -->
+    <div class="gameSetup" id="gameSetup">
+        <div class="setupScreen">
+          <h1 class="setupHeading">TIC TAC TOE</h1>
+
+          <h2 class="setuphead">Player</h2>
+          <div class="toggle-group">
+            <span>1</span>
+            <div class="toggle">
+              <div class="toggleButton" id="player"></div>
+            </div>
+            <span>2</span>
+          </div>
+
+          <h2 class="setuphead">Sound</h2>
+          <div class="toggle-group">
+            <span>Off</span>
+            <div class="toggle">
+              <div class="toggleButton" id="sound"></div>
+            </div>
+            <span>On</span>
+          </div>
+
+          <h2 class="setuphead">First Turn</h2>
+          <div class="toggle-group" id="turnGroup">
+            <span>Player</span>
+            <div class="toggle">
+              <div class="toggleButton" id="turn"></div>
+            </div>
+            <span>Computer</span>
+          </div>
+
+          <div id="diffculty" >
+          <h2 class="setuphead">Diffculty</h2>
+          <div class="toggle-group">
+            <span>Beginner</span>
+            <div class="toggle">
+              <div class="toggleButton" id="level"></div>
+            </div>
+            <span>Advanced</span>
+          </div>
+          </div>
+          
+                <button id="startButton" class="btn">Start Game</button>
+              </div>
+          </div>
+          <!-- message end -->
+      
+          <div id="playScreen">
+              <!-- Game board start -->
+              <div class="board" id="board">
+                <div class="cell" id="1" data-cell></div>
+                <div class="cell" id="2" data-cell></div>
+                <div class="cell" id="3" data-cell></div>
+                <div class="cell" id="4" data-cell></div>
+                <div class="cell" id="5" data-cell></div>
+                <div class="cell" id="6" data-cell></div>
+                <div class="cell" id="7" data-cell></div>
+                <div class="cell" id="8" data-cell></div>
+                <div class="cell" id="9" data-cell></div>
+              </div>
+                        <!-- end gameboard -->
+              <div class="playerBoard">
+                <div class="playerName" id="player1">Player</div>
+                <div class="playerName" id="player2">Computer</div>
+              </div>
+              <div class="resetGame" id="resetGame">
+                <button class="btn">Reset Game</button>
+              </div>
+          </div>
+
+                  <!-- Popup Winning/Draw Message -->
+        <div class="winning-message" id="winningMessage">
+          <div data-winning-message-text></div>
+          <button id="restartButton">Restart</button>
+        </div>
+              <!-- end Popup -->
+
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="/__/firebase/7.17.1/firebase-auth.js"></script>
+        <script src="/__/firebase/7.17.1/firebase-firestore.js"></script>
+
+          <!-- TODO: Add SDKs for Firebase products that you want to use
+              https://firebase.google.com/docs/web/setup#available-libraries -->
+          <script src="/__/firebase/7.17.1/firebase-analytics.js"></script>
+
+          <!-- Initialize Firebase -->
+          <script src="/__/firebase/init.js"></script>     
+</body>
+</html>

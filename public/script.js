@@ -36,6 +36,15 @@ let circleTurn
     toggle.addEventListener('click',toggler)
 })
 
+function check() {
+    cellElements.forEach(cell => {
+        if(cell.classList.contains(X_CLASS)){
+            console.log(cell)
+        }
+        
+    })
+}
+
 startButton.addEventListener('click',setupBlock)
 
 resetGame.addEventListener('click',restartGame)
@@ -45,6 +54,7 @@ function restartGame() {
     playScreen.style.display = 'none'
     startGame()
 }
+
 
 function setupBlock() {
     gameSetup.style.display = 'none'
@@ -134,12 +144,13 @@ function startGame() {
     setBoardHoverClass()
     winningMessageElement.classList.remove('show')
 }
-
+  check()
 function handleclick(e){
     const cell = e.target
     console.log(e.target)
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
     placeMark(cell,currentClass)
+    check()
     if(checkWin(currentClass)){
        endGame(false)  
     }
